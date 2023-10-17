@@ -46,17 +46,23 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                              <Component id="lbl_txt_pizzafajta" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="cmb_pizzafajta" max="32767" attributes="0"/>
-                              <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-                          </Group>
                           <Component id="pnl_elerhetoseg" alignment="0" max="32767" attributes="0"/>
-                          <Component id="pnl_teszta" linkSize="3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="pnl_meret" linkSize="3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="pnl_osszegzes" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                      <Component id="lbl_txt_pizzafajta" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cmb_pizzafajta" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="pnl_teszta" linkSize="3" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="pnl_meret" linkSize="3" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="pnl_osszegzes" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -248,7 +254,7 @@
                   <Component id="rbt_26cm" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="rbt_32cm" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="rbt_52cm" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
               </Group>
@@ -260,8 +266,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="rbt_32cm" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rbt_52cm" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="rbt_26cm" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rbt_52cm" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -280,17 +286,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbt_32cmActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rbt_52cm">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="btnG_pizza_meret"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="52 cm"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbt_52cmActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JRadioButton" name="rbt_26cm">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
@@ -300,6 +295,18 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbt_26cmActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rbt_52cm">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="btnG_pizza_meret"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="52 cm"/>
+          </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="rbt_52cmItemStateChanged"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbt_52cmActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -480,7 +487,7 @@
             <Property name="text" type="java.lang.String" value="Kukorica"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_paprikaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_kukoricaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbx_bacon">
@@ -503,7 +510,7 @@
             <Property name="text" type="java.lang.String" value="BBQ"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_paprikaActionPerformed,cbx_bbqActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_bbqActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbx_paradicsom">
@@ -514,7 +521,7 @@
             <Property name="text" type="java.lang.String" value="Paradicsom"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_paprikaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_paradicsomActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbx_bab">
@@ -525,7 +532,7 @@
             <Property name="text" type="java.lang.String" value="Bab"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_paprikaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_babActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbx_gomba">
@@ -536,7 +543,7 @@
             <Property name="text" type="java.lang.String" value="Gomba"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_paprikaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_gombaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbx_oliva">
@@ -547,7 +554,7 @@
             <Property name="text" type="java.lang.String" value="Oliva"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_paprikaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbx_olivaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbx_paprika">

@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 public class PizzaRendelo extends javax.swing.JFrame {
 public double osszeg = 0;
 public double segedOsszeg = 0;
+public double alapPizzaOsszeg = 0;
     /**
      * Creates new form PizzaRendelo
      */
@@ -21,7 +22,7 @@ public double segedOsszeg = 0;
         initComponents();
         //int osszeg = 0;
         //int segedOsszeg = 0;
-        fgv_osszeg(osszeg, segedOsszeg);
+        
         
     }
 
@@ -46,8 +47,8 @@ public double segedOsszeg = 0;
         rbt_kozepes = new javax.swing.JRadioButton();
         pnl_meret = new javax.swing.JPanel();
         rbt_32cm = new javax.swing.JRadioButton();
-        rbt_52cm = new javax.swing.JRadioButton();
         rbt_26cm = new javax.swing.JRadioButton();
+        rbt_52cm = new javax.swing.JRadioButton();
         pnl_elerhetoseg = new javax.swing.JPanel();
         lbl_nev = new javax.swing.JLabel();
         lbl_email = new javax.swing.JLabel();
@@ -152,19 +153,24 @@ public double segedOsszeg = 0;
             }
         });
 
-        btnG_pizza_meret.add(rbt_52cm);
-        rbt_52cm.setText("52 cm");
-        rbt_52cm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbt_52cmActionPerformed(evt);
-            }
-        });
-
         btnG_pizza_meret.add(rbt_26cm);
         rbt_26cm.setText("26 cm");
         rbt_26cm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbt_26cmActionPerformed(evt);
+            }
+        });
+
+        btnG_pizza_meret.add(rbt_52cm);
+        rbt_52cm.setText("52 cm");
+        rbt_52cm.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rbt_52cmItemStateChanged(evt);
+            }
+        });
+        rbt_52cm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbt_52cmActionPerformed(evt);
             }
         });
 
@@ -187,8 +193,8 @@ public double segedOsszeg = 0;
                 .addContainerGap()
                 .addGroup(pnl_meretLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbt_32cm)
-                    .addComponent(rbt_52cm)
-                    .addComponent(rbt_26cm))
+                    .addComponent(rbt_26cm)
+                    .addComponent(rbt_52cm))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -257,7 +263,7 @@ public double segedOsszeg = 0;
         cbx_kukorica.setText("Kukorica");
         cbx_kukorica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_paprikaActionPerformed(evt);
+                cbx_kukoricaActionPerformed(evt);
             }
         });
 
@@ -278,7 +284,6 @@ public double segedOsszeg = 0;
         cbx_bbq.setText("BBQ");
         cbx_bbq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_paprikaActionPerformed(evt);
                 cbx_bbqActionPerformed(evt);
             }
         });
@@ -287,7 +292,7 @@ public double segedOsszeg = 0;
         cbx_paradicsom.setText("Paradicsom");
         cbx_paradicsom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_paprikaActionPerformed(evt);
+                cbx_paradicsomActionPerformed(evt);
             }
         });
 
@@ -295,7 +300,7 @@ public double segedOsszeg = 0;
         cbx_bab.setText("Bab");
         cbx_bab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_paprikaActionPerformed(evt);
+                cbx_babActionPerformed(evt);
             }
         });
 
@@ -303,7 +308,7 @@ public double segedOsszeg = 0;
         cbx_gomba.setText("Gomba");
         cbx_gomba.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_paprikaActionPerformed(evt);
+                cbx_gombaActionPerformed(evt);
             }
         });
 
@@ -311,7 +316,7 @@ public double segedOsszeg = 0;
         cbx_oliva.setText("Oliva");
         cbx_oliva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_paprikaActionPerformed(evt);
+                cbx_olivaActionPerformed(evt);
             }
         });
 
@@ -458,16 +463,19 @@ public double segedOsszeg = 0;
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(lbl_txt_pizzafajta)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmb_pizzafajta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(7, 7, 7))
                             .addComponent(pnl_elerhetoseg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnl_teszta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnl_meret, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnl_osszegzes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(lbl_txt_pizzafajta)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmb_pizzafajta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(pnl_teszta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(pnl_meret, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(pnl_osszegzes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(87, 87, 87)
                         .addComponent(lbl_pizza_cim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -519,13 +527,16 @@ public double segedOsszeg = 0;
         /*osszeg = Double.parseDouble(lbl_osszeg.getText()) * 0.85;
         fgv_szorzasOsszeg(osszeg, segedOsszeg);
         //lbl_osszeg.setText(String.valueOf(osszeg));*/
-        osszeg = Double.parseDouble(lbl_osszeg.getText());
-        if(rbt_26cm.isSelected())
+        //osszeg = Double.parseDouble(lbl_osszeg.getText());
+        /*if(rbt_26cm.isSelected() == true)
             segedOsszeg = 0.85;
-        else if(rbt_32cm.isSelected())
+        else if(rbt_32cm.isSelected() == true)
             segedOsszeg = 1;
-        else if(rbt_52cm.isSelected())
+        else if(rbt_52cm.isSelected() == true)
             segedOsszeg = 2.25;
+        fgv_szorzasOsszeg(osszeg, segedOsszeg);*/
+        if(rbt_26cm.isSelected() == true)
+            segedOsszeg = 0.85;
         fgv_szorzasOsszeg(osszeg, segedOsszeg);
     }//GEN-LAST:event_rbt_26cmActionPerformed
 
@@ -560,6 +571,8 @@ public double segedOsszeg = 0;
         else
             System.out.println("Nem működik.");
         
+        alapPizzaOsszeg = arak[cmb_pizzafajta.getSelectedIndex()];
+        
         fgv_osszeg(osszeg, segedOsszeg);
     }//GEN-LAST:event_cmb_pizzafajtaActionPerformed
 
@@ -567,20 +580,23 @@ public double segedOsszeg = 0;
         if(cbx_bacon.isSelected() == true)
             segedOsszeg = 200;
         else
-            segedOsszeg = 0;
+            segedOsszeg = -200;
         fgv_osszeg(osszeg, segedOsszeg);
     }//GEN-LAST:event_cbx_baconActionPerformed
 
     private void rbt_32cmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbt_32cmActionPerformed
         /*osszeg = Double.parseDouble(lbl_osszeg.getText()) * 1;
         fgv_szorzasOsszeg(osszeg, segedOsszeg);*/
-        osszeg = Double.parseDouble(lbl_osszeg.getText());
-        if(rbt_26cm.isSelected())
+        //osszeg = Double.parseDouble(lbl_osszeg.getText());
+        /*if(rbt_26cm.isSelected() == true)
             segedOsszeg = 0.85;
-        else if(rbt_32cm.isSelected())
+        else if(rbt_32cm.isSelected() == true)
             segedOsszeg = 1;
-        else if(rbt_52cm.isSelected())
+        else if(rbt_52cm.isSelected() == true)
             segedOsszeg = 2.25;
+        fgv_szorzasOsszeg(osszeg, segedOsszeg);*/
+        if(rbt_32cm.isSelected() == true)
+            segedOsszeg = 1;
         fgv_szorzasOsszeg(osszeg, segedOsszeg);
     }//GEN-LAST:event_rbt_32cmActionPerformed
 
@@ -635,10 +651,15 @@ public double segedOsszeg = 0;
     }//GEN-LAST:event_cmb_pizzafajtaItemStateChanged
 
     private void rbt_52cmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbt_52cmActionPerformed
-        /*segedOsszeg = 2.2;
-        //osszeg = Double.parseDouble(lbl_osszeg.getText());
+        /*if(rbt_26cm.isSelected() == true)
+            segedOsszeg = 0.85;
+        else if(rbt_32cm.isSelected() == true)
+            segedOsszeg = 1;
+        else if(rbt_52cm.isSelected() == true)
+            segedOsszeg = 2.25;
         fgv_szorzasOsszeg(osszeg, segedOsszeg);*/
-        osszeg = Double.parseDouble(lbl_osszeg.getText());
+        if(rbt_52cm.isSelected() == true)
+            segedOsszeg = 2.25;
         fgv_szorzasOsszeg(osszeg, segedOsszeg);
     }//GEN-LAST:event_rbt_52cmActionPerformed
 
@@ -671,17 +692,66 @@ public double segedOsszeg = 0;
         if(cbx_bbq.isSelected() == true)
             segedOsszeg = 200;
         else
-            segedOsszeg = 0;
+            segedOsszeg = -200;
         fgv_osszeg(osszeg, segedOsszeg);
     }//GEN-LAST:event_cbx_bbqActionPerformed
 
     private void cbx_baconItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbx_baconItemStateChanged
-        if(cbx_bacon.isSelected() == true)
+        /*if(cbx_bacon.isSelected() == true)
+            segedOsszeg = 200;
+        else
+            segedOsszeg = 0;
+        fgv_osszeg(osszeg, segedOsszeg);*/
+    }//GEN-LAST:event_cbx_baconItemStateChanged
+
+    private void cbx_kukoricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_kukoricaActionPerformed
+        if(cbx_kukorica.isSelected() == true)
             segedOsszeg = 200;
         else
             segedOsszeg = -200;
         fgv_osszeg(osszeg, segedOsszeg);
-    }//GEN-LAST:event_cbx_baconItemStateChanged
+    }//GEN-LAST:event_cbx_kukoricaActionPerformed
+
+    private void cbx_paradicsomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_paradicsomActionPerformed
+        if(cbx_paradicsom.isSelected() == true)
+            segedOsszeg = 200;
+        else
+            segedOsszeg = -200;
+        fgv_osszeg(osszeg, segedOsszeg);
+    }//GEN-LAST:event_cbx_paradicsomActionPerformed
+
+    private void cbx_babActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_babActionPerformed
+        if(cbx_bab.isSelected() == true)
+            segedOsszeg = 200;
+        else
+            segedOsszeg = -200;
+        fgv_osszeg(osszeg, segedOsszeg);
+    }//GEN-LAST:event_cbx_babActionPerformed
+
+    private void cbx_gombaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_gombaActionPerformed
+        if(cbx_gomba.isSelected() == true)
+            segedOsszeg = 200;
+        else
+            segedOsszeg = -200;
+        fgv_osszeg(osszeg, segedOsszeg);
+    }//GEN-LAST:event_cbx_gombaActionPerformed
+
+    private void cbx_olivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_olivaActionPerformed
+        if(cbx_oliva.isSelected() == true)
+            segedOsszeg = 200;
+        else
+            segedOsszeg = -200;
+        fgv_osszeg(osszeg, segedOsszeg);
+    }//GEN-LAST:event_cbx_olivaActionPerformed
+
+    private void rbt_52cmItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rbt_52cmItemStateChanged
+        /*osszeg = Double.parseDouble(lbl_osszeg.getText());
+        segedOsszeg = 2.2;
+        //osszeg = Double.parseDouble(lbl_osszeg.getText());
+        //fgv_szorzasOsszeg(osszeg, segedOsszeg);
+        
+        fgv_szorzasOsszeg(osszeg, segedOsszeg);*/
+    }//GEN-LAST:event_rbt_52cmItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -761,26 +831,25 @@ public double segedOsszeg = 0;
     private javax.swing.JTextField txf_telefon;
     // End of variables declaration//GEN-END:variables
 
-    private double fgv_osszeg(double osszeg, double segedOsszeg) {
+    private void fgv_osszeg(double osszeg, double segedOsszeg) {
         
         /*String strOsszeg = lbl_osszeg.getText();
         osszeg = Double.parseDouble(strOsszeg);*/
         //osszeg változó = Aktuális számmal
-
-            osszeg = Double.parseDouble(lbl_osszeg.getText());
-            osszeg += segedOsszeg;
-
-        lbl_osszeg.setText(String.valueOf(osszeg));
+        osszeg = Double.parseDouble(lbl_osszeg.getText());
+        osszeg += segedOsszeg;
+        System.out.println("Az összeg: " + osszeg +" Ft\nA segéd: " + segedOsszeg + "Ft");
+        lbl_osszeg.setText(String.valueOf(osszeg));   
         
-        return osszeg;
     }
     
     private double fgv_szorzasOsszeg(double osszeg, double segedOsszeg) {
-        osszeg = Double.parseDouble(lbl_osszeg.getText());
+        //osszeg = Double.parseDouble(lbl_osszeg.getText());
         //osszeg változó = Aktuális számmal
         //osszeg = osszeg * segedOsszeg;
-        osszeg = osszeg * segedOsszeg;
-        lbl_osszeg.setText(String.valueOf(osszeg));
+        //osszeg = osszeg * segedOsszeg;
+        alapPizzaOsszeg *= segedOsszeg;
+        lbl_osszeg.setText(String.valueOf(alapPizzaOsszeg));
         
         return osszeg;
     }
