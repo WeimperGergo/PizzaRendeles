@@ -263,6 +263,11 @@ public double segedOsszeg = 0;
 
         cbx_bacon.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         cbx_bacon.setText("Bacon");
+        cbx_bacon.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbx_baconItemStateChanged(evt);
+            }
+        });
         cbx_bacon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbx_baconActionPerformed(evt);
@@ -368,7 +373,7 @@ public double segedOsszeg = 0;
 
         lbl_osszeg.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbl_osszeg.setForeground(new java.awt.Color(0, 153, 0));
-        lbl_osszeg.setText("0 Ft");
+        lbl_osszeg.setText("0");
 
         javax.swing.GroupLayout pnl_osszegzesLayout = new javax.swing.GroupLayout(pnl_osszegzes);
         pnl_osszegzes.setLayout(pnl_osszegzesLayout);
@@ -658,7 +663,7 @@ public double segedOsszeg = 0;
         if(cbx_paprika.isSelected() == true)
             segedOsszeg = 200;
         else
-            segedOsszeg = 0;
+            segedOsszeg = -200;
         fgv_osszeg(osszeg, segedOsszeg);
     }//GEN-LAST:event_cbx_paprikaActionPerformed
 
@@ -669,6 +674,14 @@ public double segedOsszeg = 0;
             segedOsszeg = 0;
         fgv_osszeg(osszeg, segedOsszeg);
     }//GEN-LAST:event_cbx_bbqActionPerformed
+
+    private void cbx_baconItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbx_baconItemStateChanged
+        if(cbx_bacon.isSelected() == true)
+            segedOsszeg = 200;
+        else
+            segedOsszeg = -200;
+        fgv_osszeg(osszeg, segedOsszeg);
+    }//GEN-LAST:event_cbx_baconItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -749,14 +762,15 @@ public double segedOsszeg = 0;
     // End of variables declaration//GEN-END:variables
 
     private double fgv_osszeg(double osszeg, double segedOsszeg) {
-        //osszeg = Double.parseDouble(lbl_osszeg.getText());
+        
         /*String strOsszeg = lbl_osszeg.getText();
         osszeg = Double.parseDouble(strOsszeg);*/
         //osszeg változó = Aktuális számmal
-        
-        osszeg += segedOsszeg;
 
-        lbl_osszeg.setText(String.valueOf(osszeg) + " Ft");
+            osszeg = Double.parseDouble(lbl_osszeg.getText());
+            osszeg += segedOsszeg;
+
+        lbl_osszeg.setText(String.valueOf(osszeg));
         
         return osszeg;
     }
@@ -766,7 +780,7 @@ public double segedOsszeg = 0;
         //osszeg változó = Aktuális számmal
         //osszeg = osszeg * segedOsszeg;
         osszeg = osszeg * segedOsszeg;
-        lbl_osszeg.setText(String.valueOf(osszeg) + " Ft");
+        lbl_osszeg.setText(String.valueOf(osszeg));
         
         return osszeg;
     }
